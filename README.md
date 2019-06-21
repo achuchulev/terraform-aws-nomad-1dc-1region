@@ -1,4 +1,4 @@
-# Run Nomad cluster on AWS with terraform in single DC and in single nomad region
+# Run prod Nomad cluster on AWS with terraform in single DC and in single nomad region
 
 ## High Level Overview
 
