@@ -2,7 +2,7 @@
 
 ## High Level Overview
 
-<img src="diagrams/nginx-reverse-proxy-nomad-1dc-1region.png" />
+<img src="diagrams/nomad-tls-nginx-reverse-proxy-1dc-1region.png" />
 
 ## Prerequisites
 
