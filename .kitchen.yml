@@ -1,0 +1,24 @@
+---
+driver:
+  name: terraform
+  variable_files:
+    - testing.tfvars
+
+provisioner:
+  name: terraform
+platforms:
+  - name: ubuntu
+transport:
+  ssh_key: "~/.ssh/id_rsa"
+  connection_timeout: 10
+  connection_retries: 5
+verifier:
+  name: terraform
+  groups:
+    - name: remote
+      controls:
+        - operating_system
+      hostnames: public_dns
+      username: ubuntu
+suites:
+  - name: default

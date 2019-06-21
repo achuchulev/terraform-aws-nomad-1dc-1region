@@ -33,7 +33,8 @@ client {
     retry_interval = "15s"
   }
   options = {
-    "driver.whitelist" = ""
+    "driver.raw_exec" = "1"
+    "driver.raw_exec.enable" = "1"
   }
 }
 
