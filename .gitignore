@@ -7,3 +7,10 @@
 
 # .tfvars files
 *.tfvars
+
+# cert files
+*.pem
+*.csr
+
+# test vars
+*.dc*
