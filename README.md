@@ -225,6 +225,4 @@ Target:  local://
      ✔  exit_status should eq 0
 
 Test Summary: 15 successful, 0 failures, 0 skipped
-       Finished verifying <default-terraform> (0m0.80s).
------> Kitchen is finished. (0m3.13s)
 ```
