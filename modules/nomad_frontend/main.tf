@@ -48,12 +48,7 @@ resource "aws_instance" "nginx_instance" {
   }
 
   provisioner "remote-exec" {
-    scripts = [
-      #"${path.root}/scripts/certbot.sh",
-      "${path.root}/scripts/cron_create.sh",
-    ]
-
-    #"${path.root}/scripts/cfssl.sh",
+    script = "${path.root}/scripts/cron_create.sh"
 
     connection {
       type        = "ssh"
