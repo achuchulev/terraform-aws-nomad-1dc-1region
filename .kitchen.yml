@@ -2,23 +2,25 @@
 driver:
   name: terraform
   variable_files:
-    - testing.tfvars
+    - terraform.tfvars.dc1
 
 provisioner:
   name: terraform
+
 platforms:
-  - name: ubuntu
-transport:
-  ssh_key: "~/.ssh/id_rsa"
-  connection_timeout: 10
-  connection_retries: 5
+  - name: terraform
+
 verifier:
   name: terraform
-  groups:
-    - name: remote
-      controls:
-        - operating_system
-      hostnames: public_dns
-      username: ubuntu
+  systems:
+    - name: basic
+      backend: local
+      attrs_outputs:
+        client_pub_ips:  nomad_client_public_ip
+        client_tags:     nomad_client_tags
+        server_pub_ips:  nomad_server_public_ip
+        server_tags:     nomad_server_tags
+        frontend_pub_ip: frontend_server_public_ip
+
 suites:
   - name: default
