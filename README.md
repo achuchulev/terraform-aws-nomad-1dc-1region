@@ -8,12 +8,12 @@
 
 - git
 - terraform
-- own or control the registered domain name for the certificate 
+- own or control registered domain name for the certificate 
 - have a DNS record that associates your domain name and your server’s public IP address
 - Cloudflare subscription as it is used to manage DNS records automatically
 - AWS subscription
 - ssh key
-- Debian based AMI
+- Use pre-built nomad server,client and frontend AWS AMIs on `us-east-2` region or bake your own using [Packer](https://www.packer.io)
 
 ## How to run
 
@@ -63,8 +63,8 @@ Note: Security group in AWS should allow inbound traffic on ports:
 
       Following immutable infrastructure concept the following AMIs are used:
       
-      Nomad client:    ami-0e431df20c101e6b7 ( Ubuntu Xenial with Nomad binary version 0.9.3 )
-      Nomad server:    ami-0e2aa4ea219d7657e ( Ubuntu Xenial with Nomad binary version 0.9.3 )
+      Nomad client:    ami-0e431df20c101e6b7 ( Ubuntu Xenial with nomad )
+      Nomad server:    ami-0e2aa4ea219d7657e ( Ubuntu Xenial with nomad )
       Frontend server: ami-0352bc96e72c69d2d ( Ubuntu Xenial with nginx )
 ```
 
