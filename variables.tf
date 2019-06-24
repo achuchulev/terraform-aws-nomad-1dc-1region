@@ -1,7 +1,3 @@
-# variable "nomad_version" {
-#   description = "Specifies the version of Nomad to use."
-# }
-
 variable "servers_count" {
   description = "The number of servers to provision."
   default     = "3"
