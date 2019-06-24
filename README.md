@@ -1,4 +1,4 @@
-# Run prod Nomad cluster on AWS with terraform in single DC and in single nomad region
+# Run prod Nomad cluster on AWS with terraform in single DC and in single nomad region. A kitchen test is included
 
 ## High Level Overview
 
@@ -110,7 +110,7 @@ $ export NOMAD_ADDR=https://your.dns.name
 Open web browser, access nomad web console using your instance dns name as URL and verify that 
 connection is secured and SSL certificate is valid  
 
-### Run nomad job
+## Run nomad job
 
 #### via UI
 
@@ -125,4 +125,97 @@ connection is secured and SSL certificate is valid
 
 ```
 $ nomad job run [options] <job file>
+```
+
+## Run kitchen test using kitchen-terraform plugin to verify that expected resources are being deployed   
+
+### on Mac
+
+#### Prerequisites
+
+##### Install rbenv to use ruby version 2.3.1
+
+```
+brew install rbenv
+rbenv install 2.3.1
+rbenv local 2.3.1
+rbenv versions
+```
+
+##### Add the following lines to your ~/.bash_profile:
+
+```
+eval "$(rbenv init -)"
+true
+export PATH="$HOME/.rbenv/bin:$PATH"
+```
+
+##### Reload profile: 
+
+`source ~/.bash_profile`
+
+##### Install bundler
+
+```
+gem install bundler
+bundle install
+```
+
+#### Run the test: 
+
+```
+bundle exec kitchen list
+bundle exec kitchen converge
+bundle exec kitchen verify
+bundle exec kitchen destroy
+```
+
+### on Linux
+
+#### Prerequisites
+
+```
+gem install test-kitchen
+gem install kitchen-inspec
+gem install kitchen-vagrant
+```
+
+#### Run kitchen test 
+
+```
+kitchen list
+kitchen converge
+kitchen verify
+kitchen destroy
+```
+
+### Sample output
+
+```
+Target:  local://
+
+  Command: `terraform state list`
+     ✔  stdout should include "module.nomad_server.aws_instance.new_instance"
+     ✔  stderr should include ""
+     ✔  exit_status should eq 0
+  Command: `terraform state list`
+     ✔  stdout should include "module.nomad_client.aws_instance.new_instance"
+     ✔  stderr should include ""
+     ✔  exit_status should eq 0
+  Command: `terraform state list`
+     ✔  stdout should include "module.nomad_frontend.aws_instance.nginx_instance"
+     ✔  stderr should include ""
+     ✔  exit_status should eq 0
+  Command: `terraform state list`
+     ✔  stdout should include "module.nomad_frontend.cloudflare_record.nomad_frontend"
+     ✔  stderr should include ""
+     ✔  exit_status should eq 0
+  Command: `terraform state list`
+     ✔  stdout should include "module.nomad_frontend.null_resource.certbot"
+     ✔  stderr should include ""
+     ✔  exit_status should eq 0
+
+Test Summary: 15 successful, 0 failures, 0 skipped
+       Finished verifying <default-terraform> (0m0.80s).
+-----> Kitchen is finished. (0m3.13s)
 ```
