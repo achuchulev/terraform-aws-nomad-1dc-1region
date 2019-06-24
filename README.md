@@ -54,7 +54,12 @@ nomad_region = "some-nomad-region" # specifies nomad region
 
 
 ```
-Note: Security group in AWS should allow https on port 443.
+Note: Security group in AWS should allow inbound traffic on ports:
+      
+      TCP 443 (https)
+      TCP 4646-4648 (Nomad)
+      UDP 4648 (Nomad)
+      
 
       Following immutable infrastructure concept the following AMIs are used:
       
