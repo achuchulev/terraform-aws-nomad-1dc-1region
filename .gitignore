@@ -15,3 +15,6 @@
 # test vars
 *.dc*
 .DS_Store
+
+# kitchen
+.kitchen
