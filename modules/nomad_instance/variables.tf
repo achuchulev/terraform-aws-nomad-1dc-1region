@@ -21,7 +21,8 @@ variable "availability_zone" {
 }
 
 variable "ami" {
-  default = "ami-0e2aa4ea219d7657e"
+  description = "Ubuntu Xenial Nomad Server AMI # dc1 us-east-2"
+  default     = "ami-0e2aa4ea219d7657e"
 }
 
 variable "instance_type" {}
