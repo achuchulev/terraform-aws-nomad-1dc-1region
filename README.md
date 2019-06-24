@@ -30,7 +30,7 @@ cd terraform-aws-nomad-1dc-1region
 # AWS vars
 access_key = "your_aws_access_key"
 secret_key = "your_aws_secret_key"
-ami = "some_aws_ami_id" # Debian based AMI like Ubuntu Xenial or Bionic	
+ami = "ami-0e431df20c101e6b7" # Ubuntu Xenial Nomad CLIENT AMI # dc1 us-east-2
 instance_type = "ec2-instance-instance-type"
 public_key = "your_public_ssh_key"
 region = "aws-region"
@@ -45,7 +45,6 @@ cloudflare_zone = "your.domain" # example: nomadlab.com
 subdomain_name = "subdomain_name" # example: lab
 
 # Nomad vars
-nomad_version = "some-nomad-version"
 servers_count = "number-of-nomad-server" # defaults to 3
 clients_count = "number-of-nomad-clients" # defaults to 3
 instance_role = "client" # used by client module
@@ -56,6 +55,12 @@ nomad_region = "some-nomad-region" # specifies nomad region
 
 ```
 Note: Security group in AWS should allow https on port 443.
+
+      Following immutable infrastructure concept the following AMIs are used:
+      
+      Nomad client:    ami-0e431df20c101e6b7 ( Ubuntu Xenial with Nomad binary version 0.9.3 )
+      Nomad server:    ami-0e2aa4ea219d7657e ( Ubuntu Xenial with Nomad binary version 0.9.3 )
+      Frontend server: ami-0352bc96e72c69d2d ( Ubuntu Xenial with nginx )
 ```
 
 - Initialize terraform
