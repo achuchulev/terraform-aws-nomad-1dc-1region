@@ -12,7 +12,8 @@ variable "availability_zone" {
 }
 
 variable "ami" {
-  default = "ami-0352bc96e72c69d2d"
+  description = "Ubuntu Xenial Frontend Server AMI # dc1 us-east-2"
+  default     = "ami-0352bc96e72c69d2d"
 }
 
 variable "instance_type" {}
