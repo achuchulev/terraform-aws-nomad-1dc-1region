@@ -126,10 +126,9 @@ connection is secured and SSL certificate is valid
 
 - go to `jobs`
 - click on `Run job`
-- paste or author HCL or JSON to submit to your cluster. A plan will be requested before the job is submitted
+- author a job in HCL/JSON format or paste the sample nomad job [nomad_jobs/nginx.hcl](https://github.com/achuchulev/terraform-aws-nomad-1dc-1region/blob/master/nomad_jobs/nginx.hcl) that run nginx on docker
 - run `Plan`
 - review `Job Plan` and `Run` it
-
 
 #### via CLI
 
