@@ -33,13 +33,3 @@ output "nomad_client_tags" {
 output "frontend_server_public_ip" {
   value = "${module.nomad_frontend.public_ip}"
 }
-
-# output "frontend_server_public_dns" {
-#   value = "${module.nomad_frontend.public_dns}"
-# }
-
-
-# output "frontend_server_tags" {
-#   value = "${module.nomad_frontend.tags}"
-# }
-
